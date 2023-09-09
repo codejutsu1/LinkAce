@@ -36,7 +36,7 @@ class DatabaseController extends Controller
      */
     public function configure(SetupDatabaseRequest $request): RedirectResponse
     {
-        $this->createTempDatabaseConnection($request->all());
+        $this->createTempDatabaseConnection($request->validated());
 
         if ($this->databaseHasData() && !$request->has('overwrite_data')) {
             flash(trans('setup.database.data_present'), 'danger');

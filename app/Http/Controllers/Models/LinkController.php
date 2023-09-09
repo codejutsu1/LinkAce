@@ -71,7 +71,7 @@ class LinkController extends Controller
      */
     public function store(LinkStoreRequest $request): RedirectResponse
     {
-        $link = LinkRepository::create($request->all(), true);
+        $link = LinkRepository::create($request->validated(), true);
 
         flash(trans('link.added_successfully'), 'success');
 

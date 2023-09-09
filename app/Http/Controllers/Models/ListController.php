@@ -126,7 +126,7 @@ class ListController extends Controller
      */
     public function update(ListUpdateRequest $request, LinkList $list): RedirectResponse
     {
-        $list = ListRepository::update($list, $request->all());
+        $list = ListRepository::update($list, $request->validated());
 
         flash(trans('list.updated_successfully'), 'success');
         return redirect()->route('lists.show', [$list->id]);
